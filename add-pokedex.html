@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pokedex Tracker (v7.3.0)</title>
+	<link rel="icon" href="./img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="./styles/MyStyles.css">
+</head>
+
+<body>
+	<div class="actions">
+		<div class="actions_container">
+			<h2>Add Pokedex</h2>
+			<input type="text" class="input" id="Pokedex-name" placeholder="Add a name...">
+		</div>
+	</div>
+
+	<div class="page-container">
+		<div class="inner-container bordered-container bg-purple-light">
+			<div class="GamePresetSelector_selector inner-container bg-purple">
+				<div class="GamePresetSelector_games"></div>
+				<div class="GamePresetSelector_presets" id="presets"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="./scripts/box-presets.js"></script>
+	<script src="./scripts/Pokedex-functions.js"></script>
+	<script src="./scripts/Pokedex-add.js"></script>
+</body>
+</html>

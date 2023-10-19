@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pokedex Tracker (v7.3.0)</title>
+	<link rel="icon" href="./img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="./styles/MyStyles.css">
+</head>
+
+<body>
+	<div class="actions">
+		<div class="actions_container">
+			<div class="btnGroup">
+				<a class="btn" href="./index.html">
+					<i class="icon-home"></i>
+				</a>
+				<span class="btnGroup-btn">
+					<span class="btn">
+						<i class="icon-pointer"></i>
+					</span>
+					<span class="dropdown-options" id="Selectors">
+						<div class="dropdown-title">Selection Tool</div>
+						<span class="btn">
+							<i class="icon-pointer"></i>
+							<span class="label">Select Pokemon</span>
+						</span>
+						<span class="btn">
+							<i class="icon-box"></i>
+							<span class="label">Select Box</span>
+						</span>
+					</span>
+				</span>
+				<span class="btnGroup-btn">
+					<span class="btn">
+						<i class="icon-caught"></i>
+					</span>
+					<span class="dropdown-options" id="Markers">
+						<div class="dropdown-title">Capture Tool</div>
+						<span class="btn">
+							<i class="icon-caught"></i>
+							<span class="label">Normal Marker</span>
+						</span>
+						<span class="btn">
+							<i class="icon-shiny"></i>
+							<span class="label">Shiny Marker</span>
+						</span>
+					</span>
+				</span>
+				<span class="btnGroup-btn" id="Marks">
+					<span class="btn">
+						<i class="icon-marks"></i>
+					</span>
+					<span class="dropdown-options">
+						<div class="dropdown-title">Marks Tool</div>
+						<span class="btn" onclick="toggleMarks()">
+							<i class="icon-marks"></i>
+							<span class="label">Marks</span>
+						</span>
+					</span>
+				</span>
+				<span class="btnGroup-btn">
+					<span class="btn">
+						<i class="icon-switch"></i>
+					</span>
+					<span class="dropdown-options" id="change-presets">
+						<div class="dropdown-title">Presets</div>
+					</span>
+				</span>
+			</div>
+			<div class="btnGroup">
+				<span class="btn" id="update-pokedex">
+					<i class="icon-save"></i>
+				</span>
+				<span class="btn" id="delete-pokedex">
+					<i class="icon-delete"></i>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="overlay" id="myNav">
+		<span class="close" onclick="closeModal()">&times;</span>
+		<div class="overlay-content"></div>
+	</div>
+
+	<div class="container">
+		<div class="dex-header">
+			<div class="dex-logo">
+				<img id="game-icon">
+			</div>
+			<div class="dex-info">
+				<div class="dex-title">
+					<span id="Pokedex-name"></span>
+				</div>
+				<div class="dex-name">
+					<span id="dex-name"></span>
+				</div>
+				<div class="dex-name">
+					<span id="dex-mode"></span>
+				</div>
+				<div class="dex-counters">
+					<div class="dex-counter">
+						<i class="icon-box"></i>
+						<span id="box-counter"></span>
+					</div>
+					<div class="dex-counter">
+						<i class="icon-caught"></i>
+						<span id="pokemon-counter"></span>
+					</div>
+					<div class="dex-counter">
+						<i class="icon-shiny"></i>
+						<span id="shiny-counter"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="Pokedex-section"></div>
+	</div>
+
+	<script src="./scripts/box-presets.js"></script>
+	<script src="./scripts/Pokedex-functions.js"></script>
+	<script src="./scripts/Pokedex-edit.js"></script>
+</body>
+</html>

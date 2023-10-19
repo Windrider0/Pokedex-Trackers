@@ -1,0 +1,774 @@
+* {
+	box-sizing: border-box;
+	font-family: "Times New Roman";
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--menu-height: 50px;
+	--color-beige: #F8F2E9;
+	--color-purple: #9E81D5;
+	--color-purple-light: #C8B8F9;
+	--color-white: #F3F3F3;
+	--text-color: #2C2931;
+}
+
+@font-face {
+	font-family: PokeGlyphs;
+	src: url("./PokeGlyphs.woff");
+}
+
+[class*="icon-"] {
+	font-family: PokeGlyphs;
+	font-style: normal;
+	font-variant: normal;
+	font-variant-ligatures: discretionary-ligatures;
+	font-weight: 400;
+	line-height: 1;
+	text-transform: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: #C6E5E1;
+	color: #111;
+	font-size: 1.6rem;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 120rem;
+	padding: 5.5rem 0;
+}
+
+.actions {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 1;
+	background-color: #86CAC3;
+	border-bottom: 2px solid #37AEA5;
+	padding: 0.5rem;
+}
+
+.actions_container {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 0 auto;
+	max-width: 100%;
+	min-height: 3rem;
+}
+
+.input {
+	border: none;
+	border-radius: 1rem;
+	font-size: 1.4rem;
+	font-weight: 300;
+	height: 3rem;
+	padding: 0.4rem 0.8rem;
+}
+
+#Pokedex-section {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-gap: 1.5rem;
+	padding-top: 1rem;
+	padding-bottom: 2rem;
+}
+
+.box {
+	position: relative;
+	background-color: #FFF;
+	border-radius: 24px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+	line-height: 0;
+}
+
+.box .box-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	position: relative;
+	background-color: #37AEA5;
+	border-radius: 24px 24px 0 0;
+	padding: 1rem;
+	text-align: center;
+}
+
+.box .box-header .box-title {
+	position: relative;
+	background-color: #FFF;
+	border-radius: 24px;
+	color: #000;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: normal;
+	padding: 0.5rem;
+	width: 65%;
+}
+
+.box .box-grid {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(6, minmax(32px, 14fr));
+	grid-template-rows: repeat(5, minmax(32px, 14fr));
+	grid-gap: 0;
+	border-radius: 0 0 24px 24px;
+	margin: 0;
+	padding: 0.85rem 1rem 1rem;
+}
+
+.box .box-grid .pkm-wrapper {
+	position: relative;
+	border-radius: 1rem;
+}
+
+.pkm-wrapper i.icon-caught,
+.pkm-wrapper i.icon-pokeball,
+.pkm-wrapper i.icon-uncaught {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.pkm-wrapper div.number {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.uncaught img {
+	filter: contrast(0) brightness(0.2);
+	opacity: 0.8;
+	transition: opacity 0.25s, filter 0.25s;
+}
+
+.shiny-locked img {
+	opacity: 0.2;
+	transition: opacity 0.25s, filter 0.25s;
+}
+
+.shiny-locked {
+	cursor: not-allowed;
+}
+
+.pkm-wrapper img {
+	height: 100%;
+	width: 100%;
+}
+
+.pkm-wrapper i.icon-pokeball:before {
+	background-color: white;
+	border-radius: 50%;
+	color: black;
+	content: "\E9B6";
+}
+
+
+.pkm-wrapper i.icon-uncaught:before {
+	background-color: transparent;
+	border-radius: 50%;
+	color: black;
+	content: "\E9B6";
+}
+
+.pkm-wrapper i.icon-caught:before {
+	background-color: white;
+	border-radius: 50%;
+	color: red;
+	content: "\E90E";
+}
+
+.pkm-wrapper i.icon-alpha:before {
+	color: red;
+	content: "\E913";
+}
+
+#Pokedex-div {
+	margin: 1rem auto 3rem;
+	text-align: center;
+}
+
+#Pokedex-div.single {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#Pokedex-div.multiple {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 1rem;
+}
+
+.game-card {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	border-radius: 1rem;
+	box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	height: fit-content;
+	margin-bottom: 1rem;
+	padding: 0;
+	transition: all 0.2s ease-in-out;
+}
+
+.game-card .card-body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	color: #FFF;
+	padding: 0;
+}
+
+.game-card .card-img {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #1F1F1F;
+	border-radius: 1rem;
+	padding: 0.35rem 0.35rem 3rem;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.game-card .card-img img {
+	border-radius: 1rem;
+	max-height: 100%;
+	max-width: 100%;
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.game-card .card-stats-wrapper {
+	position: absolute;
+	bottom: 0.8rem;
+}
+
+.game-card .card-stats {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	font-size: 0.8em;
+	gap: 1rem;
+}
+
+.game-card .card-stats i.icon-box:before {
+	content: "\E9C0";
+}
+
+.game-card .card-stats i.icon-caught:before {
+	content: "\E9B6";
+}
+
+.game-card .card-stats i.icon-shiny:before {
+	content: "\E9C5";
+}
+
+.bg-beige {
+	background-color: var(--color-beige);
+	color: var(--text-color);
+}
+
+.bg-purple-light {
+	background-color: var(--color-purple-light);
+	color: var(--text-color);
+}
+
+.bg-purple {
+	background-color: var(--color-purple);
+	color: var(--text-color);
+}
+
+.page-container {
+	position: relative;
+	margin: 0 auto;
+	max-width: 920px;
+	padding: 2.5rem 1.5rem;
+	padding-top: calc(var(--menu-height) + 1rem);
+}
+
+.page-container .bordered-container {
+	border-radius: 1rem;
+	border: 4px solid #000;
+	box-shadow: 4px 4px 0 2px #000;
+}
+
+.page-container .inner-container {
+	position: relative;
+	max-width: 1200px;
+	padding: 3rem;
+	border-radius: 1rem;
+	margin: 1rem auto;
+}
+
+.page-container .inner-container .inner-container {
+	margin: 1rem auto;
+}
+
+.page-container .GamePresetSelector_selector {
+	border-radius: 1rem;
+	margin-bottom: 1rem;
+	padding: 2rem 1rem;
+}
+
+.page-container .GamePresetSelector_games {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1rem;
+	padding: 1rem 2em;
+	text-align: center;
+}
+
+.page-container .GamePresetSelector_gameLogo {
+	position: relative;
+	transition: all 0.2s ease-in-out;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 1rem;
+	cursor: pointer;
+	padding: 1.5rem;
+}
+
+.page-container .GamePresetSelector_gameLogo img {
+	height: auto;
+	max-width: 100%;
+}
+
+.page-container .GamePresetSelector_presets {
+	padding: 0 2rem;
+	margin-top: 1rem;
+}
+
+.page-container .GamePresetSelector_preset {
+	margin-bottom: 2rem;
+	margin-top: 0 !important;
+	padding-bottom: 1.5rem;
+}
+
+.page-container .GamePresetSelector_presetName {
+	font-size: 1.2rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+
+.page-container div.btn {
+	position: relative;
+	display: inline-block;
+	background-color: #000;
+	border-radius: 6rem;
+	border: 2px solid #000;
+	color: #FFF;
+	cursor: pointer;
+	font-size: 0.875rem;
+	font-weight: 500;
+	line-height: 1.25rem;
+	margin: 0.5rem 0.25rem;
+	min-width: 8rem;
+	padding: 0.5rem 1.5rem;
+	text-align: center;
+	transition: all 0.2s;
+}
+
+.page-container .text-middle,
+.page-container .text-center {
+	text-align: center;
+}
+
+.page-container .GamePresetSelector_gameTitle {
+	display: inline-block;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 1.2rem;
+	font-weight: 700;
+	margin: 2rem 0;
+	padding: 1rem 2rem;
+	text-align: center;
+}
+
+.page-container #presets {
+	display: none;
+}
+
+.dex-header {
+	display: flex;
+	align-items: center;
+	background-color: #F3F3F3;
+	border-radius: 1rem;
+	border: 2px solid rgba(0, 0, 0, 0.6);
+	box-shadow: 3px 3px 0 2px rgba(0, 0, 0, 0.6);
+	color: #111;
+	margin: auto;
+	padding: 0.5rem;
+	width: 50rem;
+}
+
+.dex-header .dex-logo {
+	display: flex;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 1rem;
+	height: 100%;
+	padding: 0.5rem;
+	width: 20rem;
+}
+
+.dex-header .dex-logo img {
+	border-radius: 10px;
+	height: 100%;
+	width: 100%;
+}
+
+.dex-header .dex-info {
+	display: flex;
+	flex-direction: column;
+	height: 15rem;
+	width: 35rem;
+}
+
+.dex-header .dex-name i {
+	font-size: 1rem;
+}
+
+.dex-header .dex-title,
+.dex-header .dex-name {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
+
+.dex-header .dex-counters {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 100%;
+	width: 100%;
+}
+
+.dex-header .dex-counters .dex-counter {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 100%;
+	width: 100%;
+}
+
+.dex-header .dex-counters .dex-counter i.icon-box:before {
+	content: "\E9C0";
+}
+
+.dex-header .dex-counters .dex-counter i.icon-caught:before {
+	content: "\E9B6";
+}
+
+.dex-header .dex-counters .dex-counter i.icon-shiny:before {
+	content: "\E9C5";
+}
+
+.btnGroup {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: row;
+}
+
+.btnGroup .btnGroup-btn {
+	position: relative;
+}
+
+.btnGroup .btnGroup-btn:hover .dropdown-options {
+	display: block;
+}
+
+.btn i.icon-marks:before {
+	content: "\E9BB";
+}
+
+.btn i.icon-switch:before {
+	content: "\EF90";
+}
+
+.btn i.icon-caught:before {
+	content: "\E90E";
+}
+
+.btn i.icon-shiny:before {
+	content: "\E9C5";
+}
+
+.btn i.icon-save:before {
+	content: "save2";
+}
+
+.btn i.icon-delete:before {
+	content: "delete";
+}
+
+.btn i.icon-home:before {
+	content: "\E95A";
+}
+
+.btn i.icon-pointer:before {
+	content: "\F100";
+}
+
+.btn i.icon-box:before {
+	content: "\E9C0";
+}
+
+.btn i.icon-search:before {
+	content: "search";
+}
+
+.btn i.icon-add:before {
+	content: "add";
+}
+
+.btn i.icon-checkmark:before {
+	content: "\EA93";
+}
+
+.btn i.icon-dots:before {
+	content: "...";
+}
+
+.btnGroup .btn,
+.actions_container .btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	background-color: white;
+	border-radius: 0.4rem;
+	border: 1px solid black;
+	color: black;
+	cursor: pointer;
+	font-size: 18px;
+	height: 38px;
+	padding: 0.5rem;
+	width: 38px;
+}
+
+.btnGroup .dropdown-options {
+	position: absolute;
+	left: -0.4rem;
+	right: unset;
+	top: 100%;
+	display: none;
+	background-color: white;
+	border-radius: 0.4rem;
+	border: 2px solid black;
+	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+	color: black;
+	overflow: hidden;
+	white-space: nowrap;
+	width: auto;
+}
+
+.btnGroup .dropdown-options .dropdown-title {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid #606060;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 0.6rem 1rem;
+	pointer-events: none;
+	user-select: none;
+}
+
+.btnGroup .dropdown-options .btn {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border-radius: 0;
+	border: none;
+	padding: 1.4rem 1rem;
+	width: auto;
+}
+
+.btnGroup .dropdown-options .btn i {
+	display: block;
+	flex: 1 1;
+}
+
+.btnGroup .dropdown-options .btn .label {
+	display: block;
+	flex: 12 1;
+}
+
+.btnGroup .btn .label {
+	font-size: 14px;
+	margin-left: 0.4rem;
+	white-space: nowrap;
+}
+
+.btn.active {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.pkm-wrapper.Single:hover {
+	border: 1px solid black;
+}
+
+.box-grid.Box:hover {
+	border: 1px solid black;
+}
+
+.box-grid .pkm-wrapper .label {
+	position: absolute;
+	left: 50%;
+	top: 100%;
+	transform: translateX(-50%);
+	z-index: 10;
+	display: none;
+	background-color: #000;
+	border-radius: 1rem;
+	color: #FFF;
+	font-size: 2rem;
+	line-height: 2rem;
+	margin-top: 0.3rem;
+	max-width: 300px;
+	padding: 1rem;
+	width: max-content;
+}
+
+.box-grid .pkm-wrapper.Single:hover .label {
+	display: block;
+}
+
+.box-grid .pkm-wrapper.Single:hover img {
+	display: block;
+	filter: none;
+	opacity: 1;
+	transition: opacity 0.25s, filter 0.25s;
+}
+
+.box-grid .pkm-wrapper .label:after {
+	content: "";
+	display: block;
+	height: 0;
+	width: 0;
+	border-bottom: 9px solid #000;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	position: absolute;
+	left: 50%;
+	top: -8px;
+	margin-left: -9px;
+}
+
+.empty-message {
+	margin: 3.2rem 0;
+}
+
+.overlay {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: hidden;
+	height: 100%;
+	transition: 0.5s;
+	width: 0;
+}
+
+.overlay .overlay-content {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #E8F4FA;
+	border-radius: 5px;
+	box-shadow: 0 0 3px black;
+	padding: 1rem;
+	width: 500px;
+}
+
+.overlay .close {
+	color: white;
+	cursor: pointer;
+	font-size: 5rem;
+	position: absolute;
+	right: 2.5rem;
+	top: 1rem;
+}
+
+.overlay-content {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+	grid-gap: 2px;
+}
+
+.overlay-content .item img {
+	filter: brightness(0) contrast(0.2);
+	height: 100%;
+	width: 100%;
+}
+
+.overlay-content .item:hover img {
+	filter: none;
+}
+
+.overlay-content .item img.active {
+	filter: none;
+}
+
+.overlay-content .item {
+	position: relative;
+}
+
+.overlay-content .item .label {
+	position: absolute;
+	left: 50%;
+	top: 100%;
+	transform: translateX(-50%);
+	z-index: 10;
+	display: none;
+	background-color: #000;
+	border-radius: 1rem;
+	color: #FFF;
+	font-size: 0.85rem;
+	line-height: 1rem;
+	margin-top: 0.3rem;
+	max-width: 300px;
+	padding: 1rem;
+	width: max-content;
+}
+
+.overlay-content .item:hover .label {
+	display: block;
+}
+
+.overlay-content .item .label:after {
+	content: "";
+	display: block;
+	height: 0;
+	width: 0;
+	border-bottom: 9px solid #000;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	position: absolute;
+	left: 50%;
+	top: -8px;
+	margin-left: -9px;
+}
