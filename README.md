@@ -1,3 +1,5 @@
 # Pokedex-Tracker
 
-Took inspiration from different places.
+Took inspiration from multiple sources.
+
+Does not include pictures
