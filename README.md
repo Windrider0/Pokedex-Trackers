@@ -2,4 +2,4 @@
 
 Took inspiration from multiple sources.
 
-Does not include pictures
+Does not include Pokemon pictures
